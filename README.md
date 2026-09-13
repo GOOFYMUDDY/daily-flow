@@ -1,169 +1,263 @@
-DAILY FLOW - USER GUIDE
-========================
+# Daily Flow 🧠⚡
 
-Daily Flow is a personal focus and scheduling app that helps you plan your
-day around your actual energy levels, not just the clock. It pairs a daily
-task list with an AI agent you can talk to, and a full calendar for
-planning ahead.
+> A personalised, energy-aware scheduler that helps university students beat burnout — by learning not just *when* they're free, but *when they actually work best*.
 
-This guide walks through every screen so a new user can pick up the app
-and start using it right away.
+**Team Mozzarella Cheese**
+🎥 [Video Presentation](https://youtu.be/nS2Qrj4OfH8) · 🎨 [Presentation Slides](https://canva.link/0s7rtmd00eifxyf) · 🖥️ [Prototype link](https://jin-0804.github.io/daily-flow/)
 
+---
 
-GETTING STARTED
-----------------
+## 📌 Problem Statement
 
-When you open the app you land on the Today screen. Navigation between
-the four main sections happens through the dark pill-shaped dock at the
-bottom of the screen:
+**Track:** Stress & Workload Manager — *Beating the Burnout*
 
-    Icon                        Screen
-    ----------------------------------------
-    House                       Today
-    Penguin                     AI Agent
-    Black circle (center, +)    Add Task
-    Calendar                    Calendar
-    Person                      Profile
+Students juggle classes, assignments, work, social activities, errands, and personal needs. When everything piles up, they struggle to prioritise, delay difficult tasks, and end up cramming or sacrificing rest.
 
-Tap any icon to switch screens instantly. The active tab is always
-highlighted in white.
+Existing schedulers (**Motion, Reclaim, Sunsama**) only look at time, deadlines, priorities, and availability. They can tell you which slots are *free*, but they cannot tell which free slot is *best* for you. They fail to account for the personal conditions that decide where a task should actually go.
 
+**Where they fail:** Being *available* ≠ being *able to do the task*. A slot can look perfect by time and energy, yet still be wrong because of personal context.
 
-1. TODAY - YOUR DAILY OVERVIEW
---------------------------------
+**Example:** A student wants to study Chemistry at 10 PM.  
+- **Existing tools:** "10 PM is free, no deadline conflict → schedule it."  
+- **Student's reality:** "I can only focus on Chemistry with my friend."  
+- **Result:** Friend is asleep, task won't get done well.  
+Existing tools would still schedule it — they never learned that condition.
 
-The Today screen is the home base of the app. From top to bottom you will
-see:
+**Our answer:** Daily Flow learns the student's energy, experiences, and personal context to recommend times that actually work for them.
 
-Energy Capacity
-    A live snapshot of how you're doing right now, broken into three
-    scores out of 10:
-      - Mental   -> how sharp/focused you feel
-      - Physical -> your energy level
-      - Social   -> your readiness for group activities
+---
 
-    Below the scores, a colored progress bar shows how much of your
-    "optimal focus window" is still active for the day
-    (e.g. "Optimal focus until 5:30 PM - 78% Active").
+## 💡 Our Solution
 
-    TIP: Tap anywhere on the "Next Up" banner below the Energy Capacity
-    card to open the Capacity Check-In, where you can log how you're
-    actually feeling and get the agent's input.
+Two complementary layers working together:
 
-Next Up Banner
-    Shows your next scheduled task, its time, and location. Tap it to
-    check in before the task starts.
+| Layer | Role | Question it answers |
+|---|---|---|
+| **Deterministic Energy Layer** | Tracks mental / physical / social energy before & after activities; filters suitable slots via fixed rules | *Which times are suitable?* |
+| **Personalisation Layer (AI)** | Uses reflections, conversations, preferences & past experiences to pick the best fit and explain why | *Which suitable time is best for this student?* |
 
-Daily Tasks
-    Your full task list for the day. Each task card shows:
-      - An icon representing the task type (lecture, study, sport, etc.)
-      - The task title and location
-      - The scheduled time
+---
 
-    To complete a task: tap anywhere on the task card. The circle
-    checkmark fills in, the title gets a strikethrough, and you'll see a
-    confirmation toast. Right after completing a task, a reflection
-    prompt pops up so you can jot down a quick note about how it went.
-    Tap "Edit" on a completed task any time to add or update that
-    reflection.
+## ✨ Feature Set
 
-    To add a new task: tap "+ Add Task" next to the "Daily Tasks" header,
-    or use the (+) button in the bottom dock.
+1. **Smart Schedule & Workload Management** — Manage tasks, events, deadlines, recurring activities; detect overload and suggest breaks/recovery/adjustments.
+2. **Personalised Scheduling** — Recommend the best slot from suitable options, *with an explanation*.
+3. **Personalised AI Agent** — Discuss tasks, difficulties, and preferences; learns from conversations to improve future recommendations.
+4. **Energy Tracking** — Mental, physical, and social energy tracked before/after activities as the deterministic filtering basis.
+5. **Reflection & Feedback** — Capture *how* and *why* an activity affected the student; feeds continuous personalisation.
 
+---
 
-2. AI AGENT - CHAT WITH YOUR PLANNER
---------------------------------------
+## 🧭 Ideation & Process
 
-Tap the penguin icon to open the Agent screen, a chat interface where you
-can talk to your planning assistant in plain language.
+### Ideas Kept
+- **3-Dimension Energy Tracking** — more accurate than a single vague stress score
+- **Personalised AI Scheduling** — selects best slot from suitable options
+- **Personalised AI Agent** — understands the student beyond their schedule
+- **Post-Event Reflection** — captures the *why* behind the numbers
+- **Free Time as Recovery** — empty periods are learned recovery events too
+- **Activity Categories / Tags** — learn patterns by category (e.g. `[Revision]`), not per task name
+- **Task Splitting** — break large tasks into manageable sessions
+- **Mascot-Based AI Agent** — engaging, approachable (penguin 🐧)
 
-What you can ask it to do:
-    - "Help me plan today's study session"
-        -> suggests a focus/recharge schedule based on your current
-           energy window
-    - "Explain entropy" (or any study topic you mention)
-        -> gives a quick explanation
-    - "Add a task"
-        -> tell it a title and time and it will help you schedule it
-    - "Summarize today"
-        -> gives you a quick rundown of your day's blocks
-    - "I'm tired" / "I need to recharge"
-        -> suggests a short recovery break
+### Ideas Dropped
+| Idea | Reason |
+|---|---|
+| Single Stress Level Tracking | Too vague; can't distinguish load types |
+| Full AI-Based Scheduling | Too undetermined; energy layer stays deterministic |
+| Plain To-Do List w/ Priority Tags | Already done by Todoist/Notion; no load insight |
+| Fixed Scheduling Rules | Can't adapt to individual differences |
 
-Use the quick-action chips above the input box for one-tap common
-requests (e.g. "Add to calendar", "Explain entropy"). Your conversation
-stays in the chat until you tap "Clear Chat" to start fresh.
+### Mentor Consultation
+**8/9/2026 — Zach Khong:** *Focus more on personalisation by collecting text-based reflections, AI agent conversations, and context shared during planning.*
 
+→ **Changed:** Expanded beyond energy levels to a personalised context layer. Energy identifies *suitable* slots; the AI agent uses learned context to pick the *best-fit* slot. Past experiences also feed task-splitting and future recommendations.
 
-3. CALENDAR - PLAN AHEAD
---------------------------
+Our combined idea into final protoype:[Ideation Board](https://github.com/Jin-0804/daily-flow/blob/5c06dfb38a2d92905cc30c7392a085c7689c07d7/idea.drawio%20(1).png)
 
-Tap the calendar icon to see your full schedule. Three view modes are
-available at the top of the screen:
+---
 
-    - Day   -> a single day, hour by hour
-    - Week  -> a 7-day overview
-    - Month -> the full month at a glance
+## 🗺️ Core System Design
 
-Switch between them using the toggle at the top of the Calendar screen.
-Tap any date to jump to that day's schedule.
+### 1. Two Event Types
+- **Fixed Events** — predictable/recurring: classes, badminton training, sleep, medication. Auto-appear on future dates via recurrence rules.
+- **Temporary Events** — to be scheduled: study chapter, finish assignment, gym, games.
 
-Adding an event: tap the (+) button in the bottom dock from anywhere in
-the app. It opens the Add Task modal where you choose a date (from a
-dropdown of the next 7 days), a title, and a time.
+### 2. Every Activity Has a Demand (1–10 scale)
 
-Ask the agent while planning: on the Calendar screen, tap the small
-floating "Ask Agent" button to get scheduling suggestions without
-leaving the calendar view.
+🧠 **Mental** · 💪 **Physical** · 👥 **Social**
 
+Students give **Before / After** feedback. Example — Math Lecture:
 
-4. PROFILE - YOUR BIO & PREFERENCES
---------------------------------------
+| | Mental | Physical | Social |
+|---|---|---|---|
+| Before | 8 | 6 | 7 |
+| After | 6 | 8 | 6 |
+| **Change** | **−2** | **+2** | **−1** |
 
-Tap the person icon to view:
+The system learns which events **drain** and which **restore** — including free time, treated as an *empty recovery event*.
 
-    - Your profile card
-          Name, program/major, and current sync status.
+**Reducing feedback burden:** only ~3 initial feedback requests per activity type; once estimates stabilise, requests become occasional confirmations (*"Do you feel 😐 right now, or different?"*).
 
-    - Chronobiology Baseline
-          Your natural energy rhythm (e.g. "Early Peak - Lion") along
-          with connected wearables (Apple Watch, Oura Ring, etc.) and
-          your peak circadian focus window.
+### 3. Scheduling Logic
 
-    - System Preferences
-          Account, study program, and bio-sensor settings.
+When adding e.g. *"Study math notes chapter 1, 30 mins"*, the system evaluates all free periods:
 
+| Time | Predicted Mental | Physical | Social | Verdict |
+|---|---|---|---|---|
+| 10–11 AM | 4 | 6 | 3 | ✕ Not suitable |
+| 2–3 PM | 7 | 5 | 7 | ✓ Suitable |
+| 6–7 PM | 5 | 8 | 8 | ✕ |
+| 8–9 PM | 6 | 8 | 8 | ✕ |
 
-QUICK REFERENCE: KEY ACTIONS
--------------------------------
+**Suitability rules:** required dimension **≥ 7/10**, all others **≥ 5/10**.
 
-    I want to...                          How
-    --------------------------------------------------------------------
-    See today's schedule                  Open the Today tab
-    Mark a task done                      Tap the task card
-    Add a note to a completed task        Tap "Edit" under that task
-    Add a new task                        Tap "+ Add Task" or the (+) dock button
-    Ask for help planning my day          Open the Agent tab, type your request
-    View my whole week/month              Open the Calendar tab, switch views
-    Check in on how I'm feeling           Tap the "Next Up" banner on Today
-    Update my profile / connected devices Open the Profile tab
+- **Scenario 1:** 2 PM chosen → Mental 7 ✓ passes
+- **Scenario 2:** 10 AM chosen → Mental 4 ✕ rejected
+- **Scenario 3:** 10:30 AM chosen → recalculate state after the 10:00–10:30 recovery period, *then* check
 
+If a student insists on an unsuitable slot, a **warning** is shown — never a hard block.
 
-NOTES FOR SETUP / HOSTING
-----------------------------
+### 4. Personalised Reasoning (AI Layer)
 
-This is a static front-end (HTML/CSS/JS) - no backend required to
-preview it.
+The energy table above only tells us *which slots are suitable*. It does **not** tell us *which suitable slot is best for this student*. That's the AI layer's job.
 
-File structure:
+**Step 1 — Deterministic filter**  
+Energy rules produce a shortlist of suitable slots.  
+→ 2–3 PM ✓ · 6–7 PM ✓ · 8–9 PM ✓
 
-    index.html
-    css/style.css
-    js/app.js               -> screen navigation, dock, task completion
-    js/agent.js              -> AI agent chat logic
-    js/calendar.js            -> calendar rendering (day/week/month), event data
-    js/datetime.js             -> live clock, "today" date handling
-    images/agent-penguin.png   -> agent mascot
+**Step 2 — Personalised reasoning**  
+The AI agent takes that shortlist and combines it with learned personal context:
 
-To preview locally, just serve the folder with any static file server
-(for example: python3 -m http.server) and open index.html in a browser.
+- **Post-event reflections** — *"I lose focus on Chemistry after 30 mins alone."*
+- **Agent conversations** — *"I prefer studying with my friend."*
+- **Preferences & past outcomes** — *"Group study works, solo late-night doesn't."*
+- **Structured personal memory** — stored facts, not just chat history.
+
+**Step 3 — Best-fit recommendation + explanation**  
+The agent picks the best slot from the shortlist and explains *why*:
+
+> *"2–3 PM is best — you usually focus better on Chemistry with your friend, and they're free then."*
+
+**Deterministic layer:** *Which times are suitable?*  
+**Personalisation layer:** *Which suitable time is best for this student?*
+
+---
+
+## 🖥️ Prototype (This Repo)
+
+A working mobile-style front-end prototype (`index.html` + modular JS):
+
+| Screen | What it does |
+|---|---|
+| **Today / Dashboard** | Energy Capacity card (Mental / Physical / Social), optimal focus window, daily task list with tap-to-complete, reflection prompts |
+| **Agent** | Chat with the AI study companion — plan focus sprints, explain concepts, quick-prompt chips |
+| **Calendar** | **Day** (color-coded timeline), **Week** (days left, hours across top, scrollable, green/red energy), **Month** (dots = tasks) |
+| **Add Task** | Bottom sheet: title, category (Focus / Lecture / Recovery / Sport), duration, location → drops into **placement mode** |
+| **Placement Mode** | Auto-suggests a green (high-energy) slot; drag/tap to move; 🟢 high · 🟡 medium · 🔴 low energy zones; Confirm or Cancel; ask the agent for the best slot |
+| **Capacity Check-In** | Sliders for mental / physical / social state; agent pop-out to share how the event went; **Save & Recalibrate** auto-adjusts afternoon blocks |
+| **Reflection** | Post-event modal with quick tags + free text, saved back to task/calendar event |
+| **Profile** | User info, chronobiology baseline (Early Peak · Lion), wearable sync (Apple Watch, Oura), settings |
+
+### File Structure
+```
+index.html          → Phone frame, all screens, modals
+css/style.css       → Animations, screen/view transitions
+js/app.js           → Screen switching, bottom dock, toasts, task completion
+js/calendar.js      → Month/Week/Day rendering, placement mode, capacity & reflection logic
+js/agent.js         → Agent chat, mock replies, typing indicator
+js/datetime.js      → Live clock, dynamic today/tomorrow events, dynamic schedule
+images/             → agent-penguin.png
+```
+
+---
+
+## 🔍 What Makes It Different
+
+| Feature | Motion | Reclaim | Sunsama | **Our System** |
+|---|---|---|---|---|
+| Task & Calendar Scheduling | ✓ | ✓ | ✓ | ✓ |
+| Priorities & Deadlines | ✓ | ✓ | ✓ | ✓ |
+| Automatic Rescheduling | ✓ | ✓ | ✓ | ✓ |
+| Workload Management | ✓ | ✓ | ✓ | ✓ |
+| Mental / Physical / Social Energy Learning | — | — | — | **✓** |
+| Personal Context from Reflections & Conversations | — | Limited | — | **✓** |
+| Personalised Best-Slot Recommendation | ✓ | ✓ | ✓ | **✓ + personal context** |
+| Learns from Past Experiences | Limited | ✓ | Limited | **✓** |
+
+**Key differentiators:**
+- 🎯 **Personalised time-slot recommendation** — energy finds *suitable*; context finds *best*
+- 📝 **Learning from text reflections** — the *why* behind the numbers
+- 🤖 **Personalised AI agent** — learns habits, preferences, and context from conversation
+- 🔄 **Continuous personalisation** — the more you use it, the better it knows you
+- ✂️ **Context-aware task splitting** — past struggles → smaller suggested sessions
+- 🧩 **Energy + personal context** — deterministic layer + AI personalisation layer
+
+---
+
+## 🏗️ Technical Architecture & Feasibility
+
+### Tech Stack
+
+| Component | Technology | Purpose / Why |
+|---|---|---|
+| **Mobile Frontend** | React Native | Familiar JS/TS workflow; expandable to web later. *Constraint:* some platform-specific behaviour needed for iOS/Android |
+| **Backend** | Bun | Fast, lightweight runtime for APIs, energy calculations, scheduling logic |
+| **Database** | PostgreSQL + Prisma | Reliable self-hostable relational DB; type-safe SDK |
+| **Authentication** | OAuth | Secure sign-in without storing passwords |
+| **AI Agent** | OpenAI API + LangGraph | LLM capability + multi-step workflows for context retrieval, reasoning, recommendations. *Constraint:* cost, latency, rate limits, response inconsistency → keep constraints deterministic |
+| **Scheduling & Workflows** | Temporal | Reliable execution of recurring events, delayed tasks, reminders, background jobs; survives restarts. *Constraint:* added infra complexity |
+| **Hosting** | DigitalOcean | Straightforward cloud env; supports self-hosted PostgreSQL + Temporal |
+| **Containerisation** | Docker | Consistent packaging & deployment |
+
+### Build Plan & Scope
+
+**5.3.1 Core System** — Deterministic Energy Layer + Personalisation Layer
+
+**5.3.2 Student Schedule** — Fixed Events (recurring) & Temporary Events (to schedule)
+
+**5.3.3 Deterministic Energy Layer**
+- 3 dimensions on a 1–10 scale
+- Before/After feedback → observed change per activity
+- Learns drains *and* restores (free time = recovery activity)
+- **Activity categories/tags** avoid per-task feedback spam
+- Feedback frequency tapers as estimates stabilise
+
+**5.3.5 Predicting Suitable Time Slots**
+- Calculate predicted energy state at each candidate start time
+- Apply rules: required dim ≥ 7/10, others ≥ 5/10
+- **Recalculate within a slot** (e.g. 10:00–10:30 free recovery *before* 10:30 task)
+- Warn, don't block, on unsuitable choices
+
+**5.3.7 Personalised AI Agent**
+- Sits on top of the deterministic layer, receives structured suitability results
+- Learns from reflections, conversations, planning discussions, preferences, past outcomes
+- Acts as the system interface — can create, edit, and reschedule events via APIs
+- *Example:* "You usually focus better on Chemistry with your friend, who's free around 2 PM" → 2 PM = best fit
+
+**5.3.8 Structured Personal Memory**
+- Important info stored as **structured context**, not just chat history
+- e.g. *Preference: prefers studying Chemistry with a friend* · *Pattern: concentration drops late at night*
+- Conversation history → conversational context · Personal context → retained for future use
+
+**5.3.9 Task Breakdown**
+- Agent uses past experience to split difficult tasks (e.g. a 3-hour Biology assignment that previously caused focus loss → 3 × 1-hour sessions placed in suitable windows)
+
+---
+
+## 🚀 Running the Prototype
+
+No build step required — it's a static front-end prototype.
+
+```bash
+# Clone
+git clone <repo-url>
+cd daily-flow
+
+# Serve locally (any static server)
+python3 -m http.server 8000
+# or
+npx serve .
+```
+
+Then open `http://localhost:8000` in your browser.
